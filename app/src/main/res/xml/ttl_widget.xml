@@ -1,0 +1,12 @@
+<!-- res/xml/time_widget_info.xml
+
+Note: updatePeriodMillis is useless since minimum update time is 30 minutes, we use AlarmManager to
+    send updates.
+-->
+<appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
+    android:minWidth="144dp"
+    android:minHeight="72dp"
+    android:updatePeriodMillis="60000"
+    android:initialLayout="@layout/ttl_widget"
+    android:resizeMode="horizontal|vertical"
+    android:widgetCategory="home_screen" />

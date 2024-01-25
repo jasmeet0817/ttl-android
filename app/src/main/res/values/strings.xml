@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Time to Sleep</string>
+    <string name="time_will_display_here">Time will display here</string>
+    <string name="add_eod_widget">Add End of the day widget</string>
+    <string name="day_end_time">Day end time</string>
+    <string name="day_start_time">Day start time</string>
+    <string name="cancel">Cancel</string>
+    <string name="add_widget">Add Widget</string>
+    <string name="enter_task">Enter Task</string>
+</resources>
