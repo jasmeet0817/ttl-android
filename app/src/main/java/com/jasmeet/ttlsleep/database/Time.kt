@@ -1,9 +1,8 @@
-package com.jasmeet.ttlsleep
+package com.jasmeet.ttlsleep.database
 
 import java.util.Calendar
 
 data class Time(val hour: Int, val minute: Int) {
-    // Now a String, manually set
     override fun toString(): String = "$hour:$minute"
 
     companion object {

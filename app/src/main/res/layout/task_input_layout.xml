@@ -1,0 +1,21 @@
+<com.google.android.material.textfield.TextInputLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    android:tag="textInputLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="@string/enter_task"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:endIconMode="custom"
+    app:endIconDrawable="@drawable/delete"
+    android:visibility="gone" >
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/taskBoxTextInput"
+        android:tag="textInput"
+        android:layout_width="match_parent"
+        android:layout_height="61dp" />
+</com.google.android.material.textfield.TextInputLayout>

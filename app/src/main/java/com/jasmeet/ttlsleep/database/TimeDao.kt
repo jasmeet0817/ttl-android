@@ -1,4 +1,4 @@
-package com.jasmeet.ttlsleep
+package com.jasmeet.ttlsleep.database
 
 import androidx.room.Dao
 import androidx.room.Entity
