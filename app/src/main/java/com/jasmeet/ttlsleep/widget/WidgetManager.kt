@@ -12,7 +12,7 @@ class WidgetManager {
             val appWidgetManager = AppWidgetManager.getInstance(context)
             val thisWidget = ComponentName(context, TTLWidgetProvider::class.java)
             val appWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget)
-            appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.ttl_widget_id)
+            appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.ttl_widget)
             TTLWidgetProvider().onUpdate(context, appWidgetManager, appWidgetIds)
         }
     }

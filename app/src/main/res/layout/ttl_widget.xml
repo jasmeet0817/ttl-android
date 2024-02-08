@@ -1,8 +1,15 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ttl_widget_id"
-    android:layout_width="wrap_content"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#ACBECA">
+    android:orientation="vertical"
+    android:background="#D5EEFF"
+    android:id="@+id/ttl_widget">
+
+    <ListView
+        android:id="@+id/widget_task_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -24,15 +31,15 @@
             android:progress="65"
             android:progressDrawable="@drawable/circle_progressbar" />
 
-    <ImageView
-        android:id="@+id/timeLeftIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="85dp"
-        android:layout_centerInParent="true"
-        android:layout_marginRight="8dp"
-        android:gravity="center"
-        android:src="@drawable/ttsleep"
-        android:visibility="gone"/>
+        <ImageView
+            android:id="@+id/timeLeftIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="85dp"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="8dp"
+            android:gravity="center"
+            android:src="@drawable/ttsleep"
+            android:visibility="gone" />
 
         <TextView
             android:id="@+id/timeLeftLabel"
@@ -46,11 +53,7 @@
             android:fontFamily="@font/caveat"
             android:gravity="center"
             android:text="Time Left"
-            android:textSize="16sp" />
+            android:textSize="60sp" />
     </RelativeLayout>
 
-    <ListView
-        android:id="@+id/taskList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</RelativeLayout>
+</LinearLayout>

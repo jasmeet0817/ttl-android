@@ -17,8 +17,13 @@ class Tasks {
             tasks.subList(size - maxTasks, size)
         }
     }
+
     fun getTask(index: Int): String {
         return tasks[index]
+    }
+
+    fun size(): Int {
+        return tasks.size
     }
 
     override fun toString(): String {

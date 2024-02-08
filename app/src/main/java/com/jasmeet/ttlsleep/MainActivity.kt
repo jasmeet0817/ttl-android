@@ -110,14 +110,6 @@ class MainActivity : AppCompatActivity(), UpdateWidgetCallback {
                 .show()
             return
         }
-        if (!isStartTimeBeforeEndTime(startTime!!, endTime!!)) {
-            MaterialAlertDialogBuilder(this)
-                .setTitle("This app is for Mortals only")
-                .setMessage("Day start time must be less than day end time.")
-                .setPositiveButton("OK", null)
-                .show()
-            return
-        }
 
         val timeDao = db.timeDao()
 
