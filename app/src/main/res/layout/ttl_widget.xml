@@ -53,7 +53,7 @@
             android:fontFamily="@font/caveat"
             android:gravity="center"
             android:text="Time Left"
-            android:textSize="60sp" />
+            android:textSize="40sp" />
     </RelativeLayout>
 
 </LinearLayout>
