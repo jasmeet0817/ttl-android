@@ -68,8 +68,8 @@ class MainActivity : AppCompatActivity(), UpdateWidgetCallback {
         val dayStartTimeButton = findViewById<Button>(R.id.day_start_time_button)
         val dayEndTimeButton = findViewById<Button>(R.id.day_end_time_button)
 
-        dayStartTimeButton.setOnClickListener { openClockTicker(true, Time(9, 0)) }
-        dayEndTimeButton.setOnClickListener { openClockTicker(false, Time(23, 30)) }
+        dayStartTimeButton.setOnClickListener { openClockTicker(true, startTime ?: Time(9, 0)) }
+        dayEndTimeButton.setOnClickListener { openClockTicker(false, endTime ?: Time(23, 30)) }
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -96,8 +96,11 @@ class MainActivity : AppCompatActivity(), UpdateWidgetCallback {
             } else {
                 endTime = Time(timePicker.hour, timePicker.minute)
             }
+            lifecycleScope.launch {
+                updateDbStartEndTime()
+                onUpdateWidgetMessage()
+            }
         }
-        onUpdateWidgetMessage()
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -110,14 +113,7 @@ class MainActivity : AppCompatActivity(), UpdateWidgetCallback {
                 .show()
             return
         }
-
-        val timeDao = db.timeDao()
-
-        // Insert/Update entity
-        val startTimeEntity = TimeDbEntity(day_start_time_db_key, startTime!!.toString())
-        val endTimeEntity = TimeDbEntity(day_end_time_db_key, endTime!!.toString())
-        timeDao.upsert(startTimeEntity)
-        timeDao.upsert(endTimeEntity)
+        updateDbStartEndTime()
 
         // Open "Add Widget Dialog"
         val appWidgetManager = getSystemService(AppWidgetManager::class.java)
@@ -125,12 +121,14 @@ class MainActivity : AppCompatActivity(), UpdateWidgetCallback {
         appWidgetManager.requestPinAppWidget(componentName, null, null)
     }
 
-    private fun isStartTimeBeforeEndTime(startTime: Time, endTime: Time): Boolean {
-        return if (startTime.hour != endTime.hour) {
-            startTime.hour < endTime.hour
-        } else {
-            startTime.minute < endTime.minute
-        }
+    private suspend fun updateDbStartEndTime() {
+        val timeDao = db.timeDao()
+
+        // Insert/Update entity
+        val startTimeEntity = TimeDbEntity(day_start_time_db_key, startTime!!.toString())
+        val endTimeEntity = TimeDbEntity(day_end_time_db_key, endTime!!.toString())
+        timeDao.upsert(startTimeEntity)
+        timeDao.upsert(endTimeEntity)
     }
 
     override fun onUpdateWidgetMessage() {
